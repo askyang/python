@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>初识</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+/* GitHub stylesheet for MarkdownPad (http://markdownpad.com) */
+/* Author: Nicolas Hery - http://nicolashery.com */
+/* Version: b13fe65ca28d2e568c6ed5d7f06581183df8f2ff */
+/* Source: https://github.com/nicolahery/markdownpad-github */
+
+/* RESET
+=============================================================================*/
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/* BODY
+=============================================================================*/
+
+body {
+  font-family: Helvetica, arial, freesans, clean, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #333;
+  background-color: #fff;
+  padding: 20px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+body>*:first-child {
+  margin-top: 0 !important;
+}
+
+body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* BLOCKS
+=============================================================================*/
+
+p, blockquote, ul, ol, dl, table, pre {
+  margin: 15px 0;
+}
+
+/* HEADERS
+=============================================================================*/
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 tt, h1 code, h2 tt, h2 code, h3 tt, h3 code, h4 tt, h4 code, h5 tt, h5 code, h6 tt, h6 code {
+  font-size: inherit;
+}
+
+h1 {
+  font-size: 28px;
+  color: #000;
+}
+
+h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #ccc;
+  color: #000;
+}
+
+h3 {
+  font-size: 18px;
+}
+
+h4 {
+  font-size: 16px;
+}
+
+h5 {
+  font-size: 14px;
+}
+
+h6 {
+  color: #777;
+  font-size: 14px;
+}
+
+body>h2:first-child, body>h1:first-child, body>h1:first-child+h2, body>h3:first-child, body>h4:first-child, body>h5:first-child, body>h6:first-child {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+h1+p, h2+p, h3+p, h4+p, h5+p, h6+p {
+  margin-top: 10px;
+}
+
+/* LINKS
+=============================================================================*/
+
+a {
+  color: #4183C4;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* LISTS
+=============================================================================*/
+
+ul, ol {
+  padding-left: 30px;
+}
+
+ul li > :first-child, 
+ol li > :first-child, 
+ul li ul:first-of-type, 
+ol li ol:first-of-type, 
+ul li ol:first-of-type, 
+ol li ul:first-of-type {
+  margin-top: 0px;
+}
+
+ul ul, ul ol, ol ol, ol ul {
+  margin-bottom: 0;
+}
+
+dl {
+  padding: 0;
+}
+
+dl dt {
+  font-size: 14px;
+  font-weight: bold;
+  font-style: italic;
+  padding: 0;
+  margin: 15px 0 5px;
+}
+
+dl dt:first-child {
+  padding: 0;
+}
+
+dl dt>:first-child {
+  margin-top: 0px;
+}
+
+dl dt>:last-child {
+  margin-bottom: 0px;
+}
+
+dl dd {
+  margin: 0 0 15px;
+  padding: 0 15px;
+}
+
+dl dd>:first-child {
+  margin-top: 0px;
+}
+
+dl dd>:last-child {
+  margin-bottom: 0px;
+}
+
+/* CODE
+=============================================================================*/
+
+pre, code, tt {
+  font-size: 12px;
+  font-family: Consolas, "Liberation Mono", Courier, monospace;
+}
+
+code, tt {
+  margin: 0 0px;
+  padding: 0px 0px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px;
+}
+
+pre>code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent;
+}
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #ccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px;
+}
+
+pre code, pre tt {
+  background-color: transparent;
+  border: none;
+}
+
+kbd {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-color: #DDDDDD;
+    background-image: linear-gradient(#F1F1F1, #DDDDDD);
+    background-repeat: repeat-x;
+    border-color: #DDDDDD #CCCCCC #CCCCCC #DDDDDD;
+    border-image: none;
+    border-radius: 2px 2px 2px 2px;
+    border-style: solid;
+    border-width: 1px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    line-height: 10px;
+    padding: 1px 4px;
+}
+
+/* QUOTES
+=============================================================================*/
+
+blockquote {
+  border-left: 4px solid #DDD;
+  padding: 0 15px;
+  color: #777;
+}
+
+blockquote>:first-child {
+  margin-top: 0px;
+}
+
+blockquote>:last-child {
+  margin-bottom: 0px;
+}
+
+/* HORIZONTAL RULES
+=============================================================================*/
+
+hr {
+  clear: both;
+  margin: 15px 0;
+  height: 0px;
+  overflow: hidden;
+  border: none;
+  background: transparent;
+  border-bottom: 4px solid #ddd;
+  padding: 0;
+}
+
+/* TABLES
+=============================================================================*/
+
+table th {
+  font-weight: bold;
+}
+
+table th, table td {
+  border: 1px solid #ccc;
+  padding: 6px 13px;
+}
+
+table tr {
+  border-top: 1px solid #ccc;
+  background-color: #fff;
+}
+
+table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+/* IMAGES
+=============================================================================*/
+
+img {
+  max-width: 100%
+}
+</style>
+<script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+<script src="https://code.jquery.com/jquery-1.7.2.min.js"></script>
+<script type="text/javascript">
+ //是否显示导航栏
+ var showNavBar = true;
+ //是否展开导航栏
+ var expandNavBar = true;
+ //是否给标题自动增加序号
+ var addSNToTitle = true;
+
+ $(document).ready(function(){
+    var h1s = $("body").find("h1");
+    var h2s = $("body").find("h2");
+    var h3s = $("body").find("h3");
+    var h4s = $("body").find("h4");
+    var h5s = $("body").find("h5");
+    var h6s = $("body").find("h6");
+
+    var headCounts = [h1s.length, h2s.length, h3s.length, h4s.length, h5s.length, h6s.length];
+    var vH1Tag = null;
+    var vH2Tag = null;
+    for(var i = 0; i < headCounts.length; i++){
+	if(headCounts[i] > 0){
+	    if(vH1Tag == null){
+		vH1Tag = 'h' + (i + 1);
+	    }else if(vH2Tag == null){
+		vH2Tag = 'h' + (i + 1);
+		break;
+	    }
+	}
+    }
+    if(vH1Tag == null){
+	return;
+    }
+
+    $("body").prepend('<div class="BlogAnchor">' + 
+		'<span style="color:red;position:absolute;top:-6px;left:0px;cursor:pointer;" onclick="$(\'.BlogAnchor\').hide();">×</span>' +
+	'<p>' + 
+	    '<b id="AnchorContentToggle" title="收起" style="cursor:pointer;">目录▲</b>' + 
+	'</p>' + 
+	'<div class="AnchorContent" id="AnchorContent"> </div>' + 
+    '</div>' );
+
+    var vH1Index = 0;
+    var vH2Index = 0;
+    $("body").find(vH1Tag + (vH2Tag != null ? (','+vH2Tag) : '')).each(function(i,item){
+	var id = '';
+	var name = '';
+	var tag = $(item).get(0).tagName.toLowerCase();
+	var className = '';
+	if(tag == vH1Tag){
+	    id = name = ++vH1Index;
+	    name = id;
+	    vH2Index = 0;
+	    className = 'item_h1';
+	}else if(tag == vH2Tag){
+	    id = vH1Index + '_' + ++vH2Index;
+	    name = vH1Index + '.' + vH2Index;
+	    className = 'item_h2';
+	}
+	$(item).attr("id","wow"+id);
+		$(item).addClass("wow_head");
+		var originText = $(item).text();
+		if(addSNToTitle){
+			$(item).text(name + '. ' + originText);
+		}
+	$("#AnchorContent").css('max-height', ($(window).height() - 180) + 'px');
+	$("#AnchorContent").append('<li><a class="nav_item '+className+' anchor-link" onclick="return false;" href="#" link="#wow'+id+'">'+name+" · "+originText+'</a></li>');
+    });
+
+    $("#AnchorContentToggle").click(function(){
+	var text = $(this).html();
+	if(text=="目录▲"){
+	    $(this).html("目录▼");
+	    $(this).attr({"title":"展开"});
+	}else{
+	    $(this).html("目录▲");
+	    $(this).attr({"title":"收起"});
+	}
+	$("#AnchorContent").toggle();
+    });
+    $(".anchor-link").click(function(){
+	$("html,body").animate({scrollTop: $($(this).attr("link")).offset().top}, 500);
+    });
+
+	var headerNavs = $(".BlogAnchor li .nav_item");
+	var headerTops = [];
+	$(".wow_head").each(function(i, n){
+		headerTops.push($(n).offset().top);
+	});
+	$(window).scroll(function(){
+		var scrollTop = $(window).scrollTop();
+		$.each(headerTops, function(i, n){
+			var distance = n - scrollTop;
+			if(distance >= 0){
+				$(".BlogAnchor li .nav_item.current").removeClass('current');
+				$(headerNavs[i]).addClass('current');
+				return false;
+			}
+		});
+	});
+
+	if(!showNavBar){
+		$('.BlogAnchor').hide();
+	}
+	if(!expandNavBar){
+		$(this).html("目录▼");
+	$(this).attr({"title":"展开"});
+		$("#AnchorContent").hide();
+	}
+ });
+</script>
+<style>
+    /*导航*/
+    .BlogAnchor {
+	background: #f1f1f1;
+	padding: 10px;
+	line-height: 180%;
+	position: fixed;
+	right: 48px;
+	top: 48px;
+	border: 1px solid #aaaaaa;
+    }
+    .BlogAnchor p {
+	font-size: 18px;
+	color: #15a230;
+	margin: 0 0 0.3rem 0;
+	text-align: right;
+    }
+    .BlogAnchor .AnchorContent {
+	padding: 5px 0px;
+	overflow: auto;
+    }
+    .BlogAnchor li{
+	text-indent: 0.5rem;
+	font-size: 14px;
+	list-style: none;
+    }
+	.BlogAnchor li .nav_item{
+		padding: 3px;
+	}
+    .BlogAnchor li .item_h1{
+	margin-left: 0rem;
+    }
+    .BlogAnchor li .item_h2{
+	margin-left: 2rem;
+	font-size: 0.8rem;
+    }
+	.BlogAnchor li .nav_item.current{
+		color: white;
+		background-color: #5cc26f;
+	}
+    #AnchorContentToggle {
+	font-size: 13px;
+	font-weight: normal;
+	color: #FFF;
+	display: inline-block;
+	line-height: 20px;
+	background: #5cc26f;
+	font-style: normal;
+	padding: 1px 8px;
+    }
+    .BlogAnchor a:hover {
+	color: #5cc26f;
+    }
+    .BlogAnchor a {
+	text-decoration: none;
+    }
+</style>
+</head>
+<body>
+<p>[TOC]</p>
+<h1>Python人工智能</h1>
+<p><img src="images/1-01.png" alt="Python人工智能" /></p>
+<p>开始学习Python人工智能,为自己梳理一下整个知识脉络! </p>
+<p># Python  优势</p>
+<p><strong>1 简单</strong></p>
+<blockquote>
+<p>Python 是一种代表简单主意思想的语言,阅读一个良好的Python 程序就像是在读英语. 使你可以专注于解决问题本身,而不是去搞明白语言本身</p>
+</blockquote>
+<p><strong>2 易学</strong></p>
+<blockquote>
+<p>Python 定位是  优雅,明确,简单, 所以Python程序看起来总是简单易懂,初学者学习Python不但入门容易,而且将来深入学习也可以编写非常非常复杂的的程序</p>
+</blockquote>
+<p><strong>3 开发效率高</strong></p>
+<blockquote>
+<p>开发效率非常高,Python有强大的第三方库,基本上你想通过计算机实现的任何功能,Python 官方库里都有对应的模块进行支持,直接下载调用后,在基础库上载进行开发,大大降低了开发周期,避免重复造轮子</p>
+</blockquote>
+<p><strong>4 可移植性</strong></p>
+<blockquote>
+<p>由于它的开源本身,Python 已经被移植在需要平台(经过改动,它能够工作在任何平台上),如果你小心的避免使用依赖于系统的特性,那么你的所有python程序无需修改几乎就可以在市场上任意系统平台上运行</p>
+</blockquote>
+<p><strong>5 可扩展可嵌入性</strong></p>
+<blockquote>
+<p>如果你需要你的一段代码关键片段运行的更快,或者希望某些算法不公开,你可以把部分程序用C 或C++ 编写,然后在你的Python 程序中使用它们. 你可以把Python 嵌入你的C/C++ 程序,从而为你的程序用户提供脚本功能</p>
+</blockquote>
+<h1>Python语言特点</h1>
+<p><strong>1. Python 是弱类型语言</strong></p>
+<blockquote>
+<p>简单来说,弱数据类型语言对数据类型的各种类型区分不严格.可以不用提前声明变量的类型既可直接使用,而强类型语言则必须要提前声明变量的类型,否则这个变量不能使用</p>
+</blockquote>
+<p><strong>2. Python 是面向对象的语言</strong></p>
+<blockquote>
+<p>Python语言支持完全的面向对象编程方式,同时也支持过程化和一定程序的函数式编程</p>
+</blockquote>
+<p><strong>3.胶水语言</strong></p>
+<blockquote>
+<p>Python能够把其他语言(尤其是C 和 C++) 编写的各种模块很轻松的联合在一起,另外Python语言本身和扩展库大部分都是由 C 语言构建</p>
+</blockquote>
+<h1>Python 应用领域</h1>
+<p>Python被广泛应用于众多领域,并被各大公司使用和</p>
+<p><img src="images/1-02.png" alt="应用领域" /></p>
+<p><strong>数据分析</strong></p>
+<blockquote>
+<p>2016/2月/11 ,美国科学家宣布发现引力波,使用Python分析观测30年的数据.分析引力波数据的Python包: GWPY</p>
+</blockquote>
+<p><strong>云计算</strong></p>
+<blockquote>
+<p>典型应用--Python 开发的  OpenStack</p>
+</blockquote>
+<p><strong>WEB开发</strong></p>
+<blockquote>
+<p>众多优秀的wab框架, Django,flask,tornado 科学运算, 人工智能库: 典型库 NumPy, SciPy,Matplotib, Enthought, Librarys,Pandas </p>
+</blockquote>
+<p><strong>系统运维</strong></p>
+<blockquote>
+<p>运维人员必备, slatstack(系统自动化配置和管理), Ansible (自动化运维工具)</p>
+</blockquote>
+<p><strong>图形开发</strong></p>
+<blockquote>
+<p>Tkinter , wxPython, PyQT</p>
+</blockquote>
+<p>并且越来越多公司选择python作为其主要的开发语言,例如:</p>
+<p><strong>Google-</strong>   Google Groups  , Gmail ,  Google Maps ,   AlphaGo 等, Gogle App Engine 支持Python作为开发语言</p>
+<p><strong>NASA-</strong> 美国航天局,从1994年起把python作为主要开发语言</p>
+<p><strong>Dropbox-</strong> 美国最大的在线云存储网站,全部用Python实现,每天处理10亿个文件的上传和下载</p>
+<p><strong>豆瓣网-</strong>  图书,唱片,电影等文化产品的资料数据库网站</p>
+<p><strong>BitTTorrent</strong> bt下载软件客户端</p>
+<p><strong>gedit</strong> Linx 平台的文文本编辑器</p>
+<p><strong>GIMP</strong>  Linx 平台的图形处理软件(Linux 下的PS)</p>
+<p><strong>知乎</strong> (国外的Quora) - 社交问答网站,国内最大的问答社区,通过Python开发 Autodesk Maya - 3D 建模软件, 支持Python 作为脚本语言</p>
+<p><strong>YouTube</strong> 世界最大的视频往回走哪YouTube 就是用Python开发的</p>
+<p><strong>Facebook</strong> 大量的基础库均通过Python 实现的</p>
+<p><strong>Redhat</strong> 世界上最流行的Linux发行版中的yum 包管理工具就是通过python开发的</p>
+<p>除上面之外,还有搜狐,金山,腾讯,盛大,网易,百度,阿里,淘宝,土豆,新浪,果壳等公司都在使用Python 完成各种任务</p>
+<p><a href="http://www.python.org/about/success">更多案例</a></p>
+<h1>工作岗位和工作流</h1>
+<p>我比较偏实践派,我感觉一套知识的建立,应该落地到现实的工作流中!现在各大招聘网站上Python岗位大致有如下几个</p>
+<ul>
+<li>Python 爬虫工程师</li>
+<li>Python 后端开发工程师</li>
+<li>Python 运维</li>
+<li>Python 大数据分析师</li>
+<li>Python 全栈</li>
+<li>Python 人工智能工程师</li>
+</ul>
+<p>我现有知识架构比较偏重: 全栈, 爬虫,后端,大数据,人工智能. 接下来的指示体系的建立过程中,都会围绕这几个关键词梳理知识体系! 运维方面涉及会比较少!</p>
+<blockquote>
+<p>Pyhton的工作中最常见的流程简单整理:
+1.  运维
+2.  数据挖掘: 使用爬虫技术完成数据的采集---整理---和可视化处理
+3.  人工智能: 语音识别,图片识别,文字识别等各种智能领域,需要精通各种数学算法,机器学习原理和&gt;深度学习原理等...这是未来的发展方向</p>
+</blockquote>
+<h1>知识体系组成</h1>
+<p>关键字:后端,爬虫,大数据,人工智能,要完成这些我储备的知识体系如下!</p>
+<h2>Python语法基础</h2>
+<blockquote>
+<p>变量,
+数据类型,
+运算符,
+判断,
+循环, 
+内置对象
+:字符串,列表,元组,字典,日期和时间,函数,
+异常 <br />
+模块
+    GUI(Tkinter,wxPython等)</p>
+</blockquote>
+<p>## Python高级</p>
+<blockquote>
+<p>面向对象:类,对象,属性,方法,继承,多态,
+    IO文件操作
+    Socket网络编程
+    多线程
+    函数式编程</p>
+</blockquote>
+<h2>后端编程</h2>
+<blockquote>
+<p>数据库: mysql, MongoDB,Redis
+    Django/flask
+    Web前端: HTML5,CSS3,JavaScript核心,JQuey(Ajax),Python JSON</p>
+</blockquote>
+<h2>爬虫和数据挖掘</h2>
+<blockquote>
+<p>网络爬虫原理和引用
+    urllib /Scrapy
+    科学计算库:Numpy、SciPy、SymPy、
+    可视化库: Matplotib/Seaborn
+    数据分析处理库:Pandas
+    ML框架(Tensorflow)</p>
+</blockquote>
+<h2>人工智能数学基础</h2>
+<blockquote>
+<p>机器学习数学知识: 矩阵,信息论,概率,线性代数,统计与回归分析,
+    经典算法: 
+    回归算法,
+    决策时与随机森林,
+    贝叶斯算法,
+    Xgboost,支持向量机算法,
+    时间序列AIRMA模型,
+    神经网络基础,
+    神经网络架构,
+    PCA降维与SVD矩阵分解,
+    聚类算法,
+    推荐系统,
+    Word2Vec
+    超参数和验证集
+    参数估计</p>
+</blockquote>
+<p>## 人工智能案例实践</p>
+<blockquote>
+<p>01使用Python分析科比生涯数据
+    02案例实战-信用卡欺诈检测
+    03Python文本数据分析
+    04Kaggle竞赛案例-泰坦尼克获救预测
+    05时间序列案例实战
+    06TensorFlow框架
+    07MNIST手写字体识别
+    08Gensim中文词向量建模
+    09探索性数据分析-赛事数据集分析
+    10 探索性数据分析-农粮数据分析</p>
+</blockquote>
+<p>## 人工智能数学框架</p>
+<blockquote>
+<p>数学计算:Numpy
+科学计算: sipy
+ML框架(Tenorflow)</p>
+</blockquote>
+<p>## 机器学习和深度学习</p>
+<blockquote>
+<p>人工智能简介
+        机器学习理论基础
+        监督学习,非监督学习,强化学习
+        机器学习算法(参考上面算法)
+        自然语言处理:NLTK
+        机器学习实践(智能推荐,人工/天气数据分析,人脸识别等)</p>
+<p>深度学习前导知识: 贝叶斯定律
+        深度学习框架: 
+        Theano:10余年的Python深度学习框架
+        Tirch:具有良好的扩展性,但某写借口不全面,需要LuaJIT支持的Lua语言,通用性差
+        Keras:是Theano框架与TensoFlow前端的组合,具有良好的可移植性
+        DeepLearning4J: 基于java的Soala语法开发,应用于Hadoop和Spark系统上的深度学习
+        Caffe: 强大的图像分类框架,最容易测试评估性能的深度的学习框架
+        MXNet:可移植,科伸缩的深度学习库,具有Torch,Theano,Caffe框架
+        CNTK: 微软开发的深度学习软件包,速度快,有其独有的神经网络配置语言Brain Script 成熟度较TensorFlow低, 但是与Visual Studio 天生吻合!</p>
+<p>神经网络和深度学习
+        感知器及其训练法则
+        神经网络的种类
+        深度学习的正则化
+        优化器
+        深度学习应用(计算机视觉,自然语言处理,语音识别,)</p>
+</blockquote>
+<p>以上是Python人工智能的大致知识体系! 在人工智能模块中各知识点还需要深度梳理!</p>
+
+</body>
+</html>
+<!-- This document was created with MarkdownPad, the Markdown editor for Windows (http://markdownpad.com) -->
