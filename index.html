@@ -122,11 +122,11 @@ ul, ol {
   padding-left: 30px;
 }
 
-ul li > :first-child, 
-ol li > :first-child, 
-ul li ul:first-of-type, 
-ol li ol:first-of-type, 
-ul li ol:first-of-type, 
+ul li > :first-child,
+ol li > :first-child,
+ul li ul:first-of-type,
+ol li ol:first-of-type,
+ul li ol:first-of-type,
 ol li ul:first-of-type {
   margin-top: 0px;
 }
@@ -325,12 +325,12 @@ img {
 	return;
     }
 
-    $("body").prepend('<div class="BlogAnchor">' + 
-		'<span style="color:red;position:absolute;top:-6px;left:0px;cursor:pointer;" onclick="$(\'.BlogAnchor\').hide();">×</span>' +
-	'<p>' + 
-	    '<b id="AnchorContentToggle" title="收起" style="cursor:pointer;">目录▲</b>' + 
-	'</p>' + 
-	'<div class="AnchorContent" id="AnchorContent"> </div>' + 
+    $("body").prepend('<div class="BlogAnchor">' +
+		'<span style="color:white;border:1px solid #eee; border-radius:50%;position:absolute;background-color:rgba(0,0,0,0.3);top:-15px;right:-10px;cursor:pointer;width:30px;height:30px;font-size:38px;text-align:center;line-height:32px" onclick="$(\'.BlogAnchor\').hide();">×</span>' +
+	'<p>' +
+	    '<b id="AnchorContentToggle" title="收起" style="cursor:pointer;">目录▲</b>' +
+	'</p>' +
+	'<div class="AnchorContent" id="AnchorContent"> </div>' +
     '</div>' );
 
     var vH1Index = 0;
@@ -405,7 +405,8 @@ img {
 <style>
     /*导航*/
     .BlogAnchor {
-	background: #f1f1f1;
+	background: #fff;
+
 	padding: 10px;
 	line-height: 180%;
 	position: fixed;
@@ -420,12 +421,12 @@ img {
 	text-align: right;
     }
     .BlogAnchor .AnchorContent {
-	padding: 5px 0px;
-	overflow: auto;
+    	padding: 5px 0px;
+    	overflow: auto;
     }
     .BlogAnchor li{
 	text-indent: 0.5rem;
-	font-size: 14px;
+	font-size: 16px;
 	list-style: none;
     }
 	.BlogAnchor li .nav_item{
@@ -436,21 +437,21 @@ img {
     }
     .BlogAnchor li .item_h2{
 	margin-left: 2rem;
-	font-size: 0.8rem;
+	font-size: 1rem;
     }
 	.BlogAnchor li .nav_item.current{
 		color: white;
 		background-color: #5cc26f;
 	}
     #AnchorContentToggle {
-	font-size: 13px;
-	font-weight: normal;
-	color: #FFF;
-	display: inline-block;
-	line-height: 20px;
-	background: #5cc26f;
-	font-style: normal;
-	padding: 1px 8px;
+    	font-size: 16px;
+    	font-weight: bold;
+    	color: #333;
+    	display: inline-block;
+    	line-height: 20px;
+    	background: #5cc26f;
+    	font-style: normal;
+    	padding: 5px 8px;
     }
     .BlogAnchor a:hover {
 	color: #5cc26f;
@@ -561,7 +562,7 @@ img {
 数据类型,
 运算符,
 判断,
-循环, 
+循环,
 内置对象
 :字符串,列表,元组,字典,日期和时间,函数,
 异常 <br />
@@ -594,7 +595,7 @@ img {
 <h2>人工智能数学基础</h2>
 <blockquote>
 <p>机器学习数学知识: 矩阵,信息论,概率,线性代数,统计与回归分析,
-    经典算法: 
+    经典算法:
     回归算法,
     决策时与随机森林,
     贝叶斯算法,
@@ -637,7 +638,7 @@ ML框架(Tenorflow)</p>
         自然语言处理:NLTK
         机器学习实践(智能推荐,人工/天气数据分析,人脸识别等)</p>
 <p>深度学习前导知识: 贝叶斯定律
-        深度学习框架: 
+        深度学习框架:
         Theano:10余年的Python深度学习框架
         Tirch:具有良好的扩展性,但某写借口不全面,需要LuaJIT支持的Lua语言,通用性差
         Keras:是Theano框架与TensoFlow前端的组合,具有良好的可移植性
