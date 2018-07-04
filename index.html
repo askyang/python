@@ -289,202 +289,711 @@ img {
   max-width: 100%
 }
 </style>
-<script src="https://code.jquery.com/jquery-1.7.2.min.js"></script>
-<script type="text/javascript">
- //是否显示导航栏
- var showNavBar = true;
- //是否展开导航栏
- var expandNavBar = true;
- //是否给标题自动增加序号
- var addSNToTitle = true;
+<style type="text/css">
+.highlight  { background: #ffffff; }
+.highlight .c { color: #999988; font-style: italic } /* Comment */
+.highlight .err { color: #a61717; background-color: #e3d2d2 } /* Error */
+.highlight .k { font-weight: bold } /* Keyword */
+.highlight .o { font-weight: bold } /* Operator */
+.highlight .cm { color: #999988; font-style: italic } /* Comment.Multiline */
+.highlight .cp { color: #999999; font-weight: bold } /* Comment.Preproc */
+.highlight .c1 { color: #999988; font-style: italic } /* Comment.Single */
+.highlight .cs { color: #999999; font-weight: bold; font-style: italic } /* Comment.Special */
+.highlight .gd { color: #000000; background-color: #ffdddd } /* Generic.Deleted */
+.highlight .gd .x { color: #000000; background-color: #ffaaaa } /* Generic.Deleted.Specific */
+.highlight .ge { font-style: italic } /* Generic.Emph */
+.highlight .gr { color: #aa0000 } /* Generic.Error */
+.highlight .gh { color: #999999 } /* Generic.Heading */
+.highlight .gi { color: #000000; background-color: #ddffdd } /* Generic.Inserted */
+.highlight .gi .x { color: #000000; background-color: #aaffaa } /* Generic.Inserted.Specific */
+.highlight .go { color: #888888 } /* Generic.Output */
+.highlight .gp { color: #555555 } /* Generic.Prompt */
+.highlight .gs { font-weight: bold } /* Generic.Strong */
+.highlight .gu { color: #aaaaaa } /* Generic.Subheading */
+.highlight .gt { color: #aa0000 } /* Generic.Traceback */
+.highlight .kc { font-weight: bold } /* Keyword.Constant */
+.highlight .kd { font-weight: bold } /* Keyword.Declaration */
+.highlight .kp { font-weight: bold } /* Keyword.Pseudo */
+.highlight .kr { font-weight: bold } /* Keyword.Reserved */
+.highlight .kt { color: #445588; font-weight: bold } /* Keyword.Type */
+.highlight .m { color: #009999 } /* Literal.Number */
+.highlight .s { color: #d14 } /* Literal.String */
+.highlight .na { color: #008080 } /* Name.Attribute */
+.highlight .nb { color: #0086B3 } /* Name.Builtin */
+.highlight .nc { color: #445588; font-weight: bold } /* Name.Class */
+.highlight .no { color: #008080 } /* Name.Constant */
+.highlight .ni { color: #800080 } /* Name.Entity */
+.highlight .ne { color: #990000; font-weight: bold } /* Name.Exception */
+.highlight .nf { color: #990000; font-weight: bold } /* Name.Function */
+.highlight .nn { color: #555555 } /* Name.Namespace */
+.highlight .nt { color: #000080 } /* Name.Tag */
+.highlight .nv { color: #008080 } /* Name.Variable */
+.highlight .ow { font-weight: bold } /* Operator.Word */
+.highlight .w { color: #bbbbbb } /* Text.Whitespace */
+.highlight .mf { color: #009999 } /* Literal.Number.Float */
+.highlight .mh { color: #009999 } /* Literal.Number.Hex */
+.highlight .mi { color: #009999 } /* Literal.Number.Integer */
+.highlight .mo { color: #009999 } /* Literal.Number.Oct */
+.highlight .sb { color: #d14 } /* Literal.String.Backtick */
+.highlight .sc { color: #d14 } /* Literal.String.Char */
+.highlight .sd { color: #d14 } /* Literal.String.Doc */
+.highlight .s2 { color: #d14 } /* Literal.String.Double */
+.highlight .se { color: #d14 } /* Literal.String.Escape */
+.highlight .sh { color: #d14 } /* Literal.String.Heredoc */
+.highlight .si { color: #d14 } /* Literal.String.Interpol */
+.highlight .sx { color: #d14 } /* Literal.String.Other */
+.highlight .sr { color: #009926 } /* Literal.String.Regex */
+.highlight .s1 { color: #d14 } /* Literal.String.Single */
+.highlight .ss { color: #990073 } /* Literal.String.Symbol */
+.highlight .bp { color: #999999 } /* Name.Builtin.Pseudo */
+.highlight .vc { color: #008080 } /* Name.Variable.Class */
+.highlight .vg { color: #008080 } /* Name.Variable.Global */
+.highlight .vi { color: #008080 } /* Name.Variable.Instance */
+.highlight .il { color: #009999 } /* Literal.Number.Integer.Long */
+.pl-c {
+    color: #969896;
+}
 
- $(document).ready(function(){
-    var h1s = $("body").find("h1");
-    var h2s = $("body").find("h2");
-    var h3s = $("body").find("h3");
-    var h4s = $("body").find("h4");
-    var h5s = $("body").find("h5");
-    var h6s = $("body").find("h6");
+.pl-c1,.pl-mdh,.pl-mm,.pl-mp,.pl-mr,.pl-s1 .pl-v,.pl-s3,.pl-sc,.pl-sv {
+    color: #0086b3;
+}
 
-    var headCounts = [h1s.length, h2s.length, h3s.length, h4s.length, h5s.length, h6s.length];
-    var vH1Tag = null;
-    var vH2Tag = null;
-    for(var i = 0; i < headCounts.length; i++){
-    if(headCounts[i] > 0){
-        if(vH1Tag == null){
-        vH1Tag = 'h' + (i + 1);
-        }else if(vH2Tag == null){
-        vH2Tag = 'h' + (i + 1);
-        break;
-        }
-    }
-    }
-    if(vH1Tag == null){
-    return;
-    }
+.pl-e,.pl-en {
+    color: #795da3;
+}
 
-    $("body").prepend('<div class="BlogAnchor">' +
-        '<span style="color:white;border:1px solid #eee; border-radius:50%;position:absolute;background-color:rgba(0,0,0,0.3);top:-15px;right:-10px;cursor:pointer;width:30px;height:30px;font-size:38px;text-align:center;line-height:32px" onclick="$(\'.BlogAnchor\').hide();">×</span>' +
-    '<p>' +
-        '<b id="AnchorContentToggle" title="收起" style="cursor:pointer;">目录▲</b>' +
-    '</p>' +
-    '<div class="AnchorContent" id="AnchorContent"> </div>' +
-    '</div>' );
+.pl-s1 .pl-s2,.pl-smi,.pl-smp,.pl-stj,.pl-vo,.pl-vpf {
+    color: #333;
+}
 
-    var vH1Index = 0;
-    var vH2Index = 0;
-    $("body").find(vH1Tag + (vH2Tag != null ? (','+vH2Tag) : '')).each(function(i,item){
-    var id = '';
-    var name = '';
-    var tag = $(item).get(0).tagName.toLowerCase();
-    var className = '';
-    if(tag == vH1Tag){
-        id = name = ++vH1Index;
-        name = id;
-        vH2Index = 0;
-        className = 'item_h1';
-    }else if(tag == vH2Tag){
-        id = vH1Index + '_' + ++vH2Index;
-        name = vH1Index + '.' + vH2Index;
-        className = 'item_h2';
-    }
-    $(item).attr("id","wow"+id);
-        $(item).addClass("wow_head");
-        var originText = $(item).text();
-        if(addSNToTitle){
-            $(item).text(name + '. ' + originText);
-        }
-    $("#AnchorContent").css('max-height', ($(window).height() - 180) + 'px');
-    $("#AnchorContent").append('<li><a class="nav_item '+className+' anchor-link" onclick="return false;" href="#" link="#wow'+id+'">'+name+" · "+originText+'</a></li>');
-    });
+.pl-ent {
+    color: #63a35c;
+}
 
-    $("#AnchorContentToggle").click(function(){
-    var text = $(this).html();
-    if(text=="目录▲"){
-        $(this).html("目录▼");
-        $(this).attr({"title":"展开"});
-    }else{
-        $(this).html("目录▲");
-        $(this).attr({"title":"收起"});
-    }
-    $("#AnchorContent").toggle();
-    });
-    $(".anchor-link").click(function(){
-    $("html,body").animate({scrollTop: $($(this).attr("link")).offset().top}, 500);
-    });
+.pl-k,.pl-s,.pl-st {
+    color: #a71d5d;
+}
 
-    var headerNavs = $(".BlogAnchor li .nav_item");
-    var headerTops = [];
-    $(".wow_head").each(function(i, n){
-        headerTops.push($(n).offset().top);
-    });
-    $(window).scroll(function(){
-        var scrollTop = $(window).scrollTop();
-        $.each(headerTops, function(i, n){
-            var distance = n - scrollTop;
-            if(distance >= 0){
-                $(".BlogAnchor li .nav_item.current").removeClass('current');
-                $(headerNavs[i]).addClass('current');
-                return false;
-            }
-        });
-    });
+.pl-pds,.pl-s1,.pl-s1 .pl-pse .pl-s2,.pl-sr,.pl-sr .pl-cce,.pl-sr .pl-sra,.pl-sr .pl-sre,.pl-src,.pl-v {
+    color: #df5000;
+}
 
-    if(!showNavBar){
-        $('.BlogAnchor').hide();
-    }
-    if(!expandNavBar){
-        $(this).html("目录▼");
-    $(this).attr({"title":"展开"});
-        $("#AnchorContent").hide();
-    }
- });
-</script>
+.pl-id {
+    color: #b52a1d;
+}
+
+.pl-ii {
+    background-color: #b52a1d;
+    color: #f8f8f8;
+}
+
+.pl-sr .pl-cce {
+    color: #63a35c;
+    font-weight: bold;
+}
+
+.pl-ml {
+    color: #693a17;
+}
+
+.pl-mh,.pl-mh .pl-en,.pl-ms {
+    color: #1d3e81;
+    font-weight: bold;
+}
+
+.pl-mq {
+    color: #008080;
+}
+
+.pl-mi {
+    color: #333;
+    font-style: italic;
+}
+
+.pl-mb {
+    color: #333;
+    font-weight: bold;
+}
+
+.pl-md,.pl-mdhf {
+    background-color: #ffecec;
+    color: #bd2c00;
+}
+
+.pl-mdht,.pl-mi1 {
+    background-color: #eaffea;
+    color: #55a532;
+}
+
+.pl-mdr {
+    color: #795da3;
+    font-weight: bold;
+}
+
+.pl-mo {
+    color: #1d3e81;
+}
+.task-list {
+padding-left:10px;
+margin-bottom:0;
+}
+
+.task-list li {
+    margin-left: 20px;
+}
+
+.task-list-item {
+list-style-type:none;
+padding-left:10px;
+}
+
+.task-list-item label {
+font-weight:400;
+}
+
+.task-list-item.enabled label {
+cursor:pointer;
+}
+
+.task-list-item+.task-list-item {
+margin-top:3px;
+}
+
+.task-list-item-checkbox {
+display:inline-block;
+margin-left:-20px;
+margin-right:3px;
+vertical-align:1px;
+}
+</style>
+<meta http-equiv="Expires" content="0">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Cache-control" content="no-cache">
+<meta http-equiv="Cache" content="no-cache">
+
 <style>
     /*导航*/
-    .BlogAnchor {
-    background: #fff;
+    /* RESET
+=============================================================================*/
 
-    padding: 10px;
-    line-height: 180%;
-    position: fixed;
-    right: 48px;
-    top: 48px;
-    border: 1px solid #aaaaaa;
-    }
-    .BlogAnchor p {
-    font-size: 18px;
-    color: #15a230;
-    margin: 0 0 0.3rem 0;
-    text-align: right;
-    }
-    .BlogAnchor .AnchorContent {
-        padding: 5px 0px;
-        overflow: auto;
-    }
-    .BlogAnchor li{
-    text-indent: 0.5rem;
-    font-size: 16px;
-    list-style: none;
-    }
-    .BlogAnchor li .nav_item{
-        padding: 3px;
-    }
-    .BlogAnchor li .item_h1{
-    margin-left: 0rem;
-    }
-    .BlogAnchor li .item_h2{
-    margin-left: 2rem;
-    font-size: 1rem;
-    }
-    .BlogAnchor li .nav_item.current{
-        color: white;
-        background-color: #5cc26f;
-    }
-    #AnchorContentToggle {
-        font-size: 16px;
-        font-weight: bold;
-        color: #333;
-        display: inline-block;
-        line-height: 20px;
-        background: #5cc26f;
-        font-style: normal;
-        padding: 5px 8px;
-    }
-    .BlogAnchor a:hover {
-    color: #5cc26f;
-    }
-    .BlogAnchor a {
-    text-decoration: none;
-    }
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/* BODY
+=============================================================================*/
+
+body {
+  font-family: 'microsoft yahei' , Helvetica, arial, freesans, clean, sans-serif;
+  font-size: 16px;
+  line-height: 1.8;
+  /*color: #333;*/
+  color: #3f3f3f;
+  background-color: #fff;
+  padding: 20px;
+  max-width: 960px;
+  margin: 0 auto;
+  max-width: 1000px;
+  word-break: break-word!important;
+  word-break: break-all;
+}
+
+body>*:first-child {
+  margin-top: 0 !important;
+}
+
+body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* BLOCKS
+=============================================================================*/
+
+p, blockquote, ul, ol, dl, table, pre {
+  margin: 15px 0;
+}
+
+/* HEADERS
+=============================================================================*/
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'PingFang SC','Microsoft YaHei',SimHei,Arial,SimSun;
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 tt, h1 code, h2 tt, h2 code, h3 tt, h3 code, h4 tt, h4 code, h5 tt, h5 code, h6 tt, h6 code {
+  font-size: inherit;
+}
+
+h1 {
+  font-size: 36px;
+  color: #000;
+}
+
+h2 {
+  font-size: 32px;
+  border-bottom: 2px solid #3F3F3F;
+  color: #000;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+}
+
+h3 {
+  font-size: 28px;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+}
+
+h4 {
+  font-size: 24px;
+}
+
+h5 {
+  font-size: 20px;
+}
+
+h6 {
+  color: #777;
+  font-size: 16px;
+}
+
+body>h2:first-child, body>h1:first-child, body>h1:first-child+h2, body>h3:first-child, body>h4:first-child, body>h5:first-child, body>h6:first-child {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+h1+p, h2+p, h3+p, h4+p, h5+p, h6+p {
+  margin-top: 10px;
+}
+
+/* LINKS
+=============================================================================*/
+
+a {
+  color: #4183C4;
+  text-decoration: none;
+}
+
+a:active, a:hover, a:hover, a:visited {
+  color: #ca0c16;
+  text-decoration: underline;
+}
+
+
+/* LISTS
+=============================================================================*/
+
+ul, ol {
+  padding-left: 30px;
+}
+
+ul li > :first-child, 
+ol li > :first-child, 
+ul li ul:first-of-type, 
+ol li ol:first-of-type, 
+ul li ol:first-of-type, 
+ol li ul:first-of-type {
+  margin-top: 0px;
+}
+
+ul ul, ul ol, ol ol, ol ul {
+  margin-bottom: 0;
+}
+
+dl {
+  padding: 0;
+}
+
+dl dt {
+  font-size: 14px;
+  font-weight: bold;
+  font-style: italic;
+  padding: 0;
+  margin: 15px 0 5px;
+}
+
+dl dt:first-child {
+  padding: 0;
+}
+
+dl dt>:first-child {
+  margin-top: 0px;
+}
+
+dl dt>:last-child {
+  margin-bottom: 0px;
+}
+
+dl dd {
+  margin: 0 0 15px;
+  padding: 0 15px;
+}
+
+dl dd>:first-child {
+  margin-top: 0px;
+}
+
+dl dd>:last-child {
+  margin-bottom: 0px;
+}
+
+/* CODE
+=============================================================================*/
+
+p code {
+    color: #b52a1d;
+}
+
+pre, code, tt {
+  /*font-size: 13px;*/
+  font-family: Consolas, "Liberation Mono", Courier, monospace;
+}
+
+code, tt {
+  margin: 0 2px;
+  padding: 0px 8px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px;  
+}
+
+pre>code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent;
+
+white-space: pre-wrap; /* css-3 */
+white-space: -moz-pre-wrap; /* mozilla, since 1999 */
+white-space: -pre-wrap; /* opera 4-6 */
+white-space: -o-pre-wrap; /* opera 7 */
+word-wrap: break-word; /* internet explorer 5.5+ */
+overflow: auto;
+word-break: break-all;
+word-wrap: break-word;
+
+}
+
+pre {
+  background-color: #F9F9F9;
+  border: 1px solid #ccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px;
+}
+
+
+
+pre code, pre tt {
+  background-color: transparent;
+  border: none;
+}
+
+kbd {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-color: #DDDDDD;
+    background-image: linear-gradient(#F1F1F1, #DDDDDD);
+    background-repeat: repeat-x;
+    border-color: #DDDDDD #CCCCCC #CCCCCC #DDDDDD;
+    border-image: none;
+    border-radius: 2px 2px 2px 2px;
+    border-style: solid;
+    border-width: 1px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    line-height: 10px;
+    padding: 1px 4px;
+}
+
+/* QUOTES
+=============================================================================*/
+
+blockquote {  
+    padding: 15px 20px;
+    border-left: 10px solid #F1F1F1;
+    background-color: #F9F9F9;
+    border-radius: 0 5px 5px 0;    
+}
+
+blockquote>:first-child {
+  margin-top: 0px;
+}
+
+blockquote>:last-child {
+  margin-bottom: 0px;
+}
+
+/* HORIZONTAL RULES
+=============================================================================*/
+
+hr {
+  clear: both;
+  margin: 15px 0;
+  height: 0px;
+  overflow: hidden;
+  border: none;
+  background: transparent;
+  border-bottom: 4px solid #ddd;
+  padding: 0;
+}
+
+/* TABLES
+=============================================================================*/
+
+
+
+table {
+  font-family: Helvetica, arial, freesans, clean, sans-serif;
+  padding: 0;
+  border-collapse: collapse;
+  border-spacing: 0;
+  font-size: 1em;
+  font: inherit;
+  border: 0;
+}
+
+tbody {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+table tr {
+  border: 0;
+  border-top: 1px solid #CCC;
+  background-color: white;
+  margin: 0;
+  padding: 0;
+}
+
+table tr:nth-child(2n) {
+  background-color: #F8F8F8;
+}
+
+table tr th, table tr td {
+  font-size: 1em;
+  border: 1px solid #CCC;
+  margin: 0;
+  padding: 0.5em 1em;
+}
+
+table tr th {
+ font-weight: bold;
+  background-color: #F0F0F0;
+}
+
+
+
+/* IMAGES
+=============================================================================*/
+
+img {  
+  max-width: 1000px;
+}
+
+
+
+strong ,b {
+    padding: 0 4px;
+}
+</style>
+<script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+<script type="text/javascript">
+ //是否显示导航栏
+ var showNavBar = true;
+ //是否展开导航栏
+ var expandNavBar = true;
+
+ $(document).ready(function(){
+    var h1s = $("body").find("h1");
+    var h2s = $("body").find("h2");
+    var h3s = $("body").find("h3");
+    var h4s = $("body").find("h4");
+    var h5s = $("body").find("h5");
+    var h6s = $("body").find("h6");
+
+    var headCounts = [h1s.length, h2s.length, h3s.length, h4s.length, h5s.length, h6s.length];
+    var vH1Tag = null;
+    var vH2Tag = null;
+    for(var i = 0; i < headCounts.length; i++){
+        if(headCounts[i] > 0){
+            if(vH1Tag == null){
+                vH1Tag = 'h' + (i + 1);
+            }else{
+                vH2Tag = 'h' + (i + 1);
+            }
+        }
+    }
+    if(vH1Tag == null){
+        return;
+    }
+
+    $("body").prepend('<div class="BlogAnchor">' + 
+        '<span style="color:red;position:absolute;top:-6px;left:0px;cursor:pointer;" onclick="$(\'.BlogAnchor\').hide();">×</span>' +
+        '<p>' + 
+            '<b id="AnchorContentToggle" title="收起" style="cursor:pointer;">目录▲</b>' + 
+        '</p>' + 
+        '<div class="AnchorContent" id="AnchorContent"> </div>' + 
+    '</div>' );
+
+    var vH1Index = 0;
+    var vH2Index = 0;
+    $("body").find("h1,h2,h3,h4,h5,h6").each(function(i,item){
+        var id = '';
+        var name = '';
+        var tag = $(item).get(0).tagName.toLowerCase();
+        var className = '';
+        if(tag == vH1Tag){
+            id = name = ++vH1Index;
+            name = id;
+            vH2Index = 0;
+            className = 'item_h1';
+        }else if(tag == vH2Tag){
+            id = vH1Index + '_' + ++vH2Index;
+            name = vH1Index + '.' + vH2Index;
+            className = 'item_h2';
+        }
+        $(item).attr("id","wow"+id);
+        $(item).addClass("wow_head");
+        $("#AnchorContent").css('max-height', ($(window).height() - 180) + 'px');
+        $("#AnchorContent").append('<li><a class="nav_item '+className+' anchor-link" onclick="return false;" href="#" link="#wow'+id+'">'+name+" · "+$(this).text()+'</a></li>');
+    });
+
+    $("#AnchorContentToggle").click(function(){
+        var text = $(this).html();
+        if(text=="目录▲"){
+            $(this).html("目录▼");
+            $(this).attr({"title":"展开"});
+        }else{
+            $(this).html("目录▲");
+            $(this).attr({"title":"收起"});
+        }
+        $("#AnchorContent").toggle();
+    });
+    $(".anchor-link").click(function(){
+        $("html,body").animate({scrollTop: $($(this).attr("link")).offset().top}, 500);
+    });
+
+    var headerNavs = $(".BlogAnchor li .nav_item");
+    var headerTops = [];
+    $(".wow_head").each(function(i, n){
+        headerTops.push($(n).offset().top);
+    });
+    $(window).scroll(function(){
+        var scrollTop = $(window).scrollTop();
+        $.each(headerTops, function(i, n){
+            var distance = n - scrollTop;
+            if(distance >= 0){
+                $(".BlogAnchor li .nav_item.current").removeClass('current');
+                $(headerNavs[i]).addClass('current');
+                return false;
+            }
+        });
+    });
+
+    if(!showNavBar){
+        $('.BlogAnchor').hide();
+    }
+    if(!expandNavBar){
+        $(this).html("目录▼");
+        $(this).attr({"title":"展开"});
+        $("#AnchorContent").hide();
+    }
+ });
+</script>
+<style>
+    /*导航*/
+    .BlogAnchor {
+        background: #f1f1f1;
+        padding: 10px;
+        line-height: 180%;
+        position: fixed;
+        right: 48px;
+        top: 48px;
+        border: 1px solid #aaaaaa;
+    }
+    .BlogAnchor p {
+        font-size: 18px;
+        color: #15a230;
+        margin: 0 0 0.3rem 0;
+        text-align: right;
+    }
+    .BlogAnchor .AnchorContent {
+        padding: 5px 0px;
+        overflow: auto;
+    }
+    .BlogAnchor li{
+        text-indent: 0.5rem;
+        font-size: 14px;
+        list-style: none;
+    }
+    .BlogAnchor li .nav_item{
+        padding: 3px;
+    }
+    .BlogAnchor li .item_h1{
+        margin-left: 0rem;
+    }
+    .BlogAnchor li .item_h2{
+        margin-left: 2rem;
+        font-size: 0.8rem;
+    }
+    .BlogAnchor li .nav_item.current{
+        color: white;
+        background-color: #5cc26f;
+    }
+    #AnchorContentToggle {
+        font-size: 13px;
+        font-weight: normal;
+        color: #FFF;
+        display: inline-block;
+        line-height: 20px;
+        background: #5cc26f;
+        font-style: normal;
+        padding: 1px 8px;
+    }
+    .BlogAnchor a:hover {
+        color: #5cc26f;
+    }
+    .BlogAnchor a {
+        text-decoration: none;
+    }
 </style>
 </head>
 <body>
-<h1>Python语法基础</h1>
+<h1 id="python-">Python语法基础</h1>
 <ul>
-<li>01-初始Python</li>
-</ul>
+<li>01-初始Python</li></ul>
 <p><a href="python1/1-1.html" title="Pyhthon初识">Python初识</a></p>
 <pre><code>本章核心
 1. 简单了人工智能
 2. 了解Python人工智能组成
 3. 安装Python环境
-</code></pre>
-
-<ul>
-<li>02-变量数据类型和运算符</li>
-</ul>
+</code></pre><ul>
+<li>02-变量数据类型和运算符</li></ul>
 <p><a href="python1/1-2.html">变量数据数据类型和运算符</a></p>
 <pre><code>本章核心
 1. 变量
 2. Python基本数据类型
 3. 数据类型转换
 4. 运算符
-</code></pre>
-
-<ul>
-<li>03-判断和循环</li>
-</ul>
+</code></pre><ul>
+<li>03-判断和循环</li></ul>
 <p><a href="python1/1-3.html">判断和循环</a></p>
 <pre><code>本章核心
 1. 单如果
@@ -493,86 +1002,45 @@ img {
 4. 判断嵌套
 5. while循环
 6. for..in
-</code></pre>
-
-<ul>
-<li>04-函数</li>
-</ul>
+</code></pre><ul>
+<li>04-函数</li></ul>
 <p><a href="python1/1-4.html">函数</a></p>
 <pre><code>本章核心
 1. 函数概念
 2. 函数定义和使用
 3. return返回值
-</code></pre>
-
-<ul>
-<li>05-数字和字符串</li>
-</ul>
+</code></pre><ul>
+<li>05-数字和字符串</li></ul>
 <p><a href="python1/1-5.html">数字和字符串</a></p>
 <pre><code>本章核心
 1. 数字相关方法
 2. 字符串相关方法
-</code></pre>
-
-<ul>
-<li>06-数据结构-list和tuple</li>
-</ul>
+</code></pre><ul>
+<li>06-数据结构-list和tuple</li></ul>
 <p><a href="python1/1-6.html">list和tuple</a></p>
 <pre><code>本章核心
 1. list存取编列数据和常用方法
 2. tuple特点
-</code></pre>
-
-<ul>
-<li>07-数据结构-dictionary和set </li>
-</ul>
+</code></pre><ul>
+<li>07-数据结构-dictionary和set </li></ul>
 <p><a href="python1/1-7.html">dict和set</a></p>
 <pre><code>本章核心
 1. dict特点,存取数据和常用方法
 2. set特点,存取数据和常用方法
-</code></pre>
-
-<ul>
-<li>08-OOP入门</li>
-</ul>
+</code></pre><ul>
+<li>08-OOP入门</li></ul>
 <p><a href="python1/1-8.html">OOP入门</a></p>
 <pre><code>本章核心
 1. 理解面向对象思想
 2. 创建类,对象和方法
-</code></pre>
-
+</code></pre><ul>
+<li>09-模块和包</li></ul>
 <ul>
-<li>
-<p>09-模块和包</p>
-</li>
-<li>
-<p>10-内置模块math,random,日期时间,sys,os</p>
-</li>
-<li>11-内置模块I/O</li>
-<li>12-OOP继承</li>
-<li>13-OOP多态</li>
-<li>14-异常</li>
-<li>15-多线程</li>
-<li>16-序列化</li>
-<li>17-网络编程</li>
-<li>18-数据结构和算法</li>
-<li>19-GUI-Tkinter入门</li>
-<li>20-GUI-基础组件和布局</li>
-<li>21-GUI-Event事件绑定</li>
-<li>综合案例1: 银行取款机界面</li>
-<li>综合案例2: 人机猜拳</li>
-<li>综合案例3: 文章字数统计</li>
-<li>综合案例4: 计算器-TKinter</li>
-<li>综合案例5: 随机抽奖-Tiknter+ 线程</li>
-<li>综合案例6: 压缩软件-Tkinter +压缩文件 </li>
-<li>综合案例7: webserver</li>
-<li>综合案例8: 飞机大战</li>
-<li>综合案例9: 聊天室</li>
-</ul>
-<h1>Python后端开发</h1>
-<h1>Python爬虫</h1>
-<h1>Python大数据</h1>
-<h1>Python人工智能</h1>
+<li>10-内置模块math,random,日期时间,sys,os</li><li>11-内置模块I/O</li><li>12-OOP继承</li><li>13-OOP多态</li><li>14-异常</li><li>15-多线程</li><li>16-序列化</li><li>17-网络编程</li><li>18-数据结构和算法</li><li>19-GUI-Tkinter入门</li><li>20-GUI-基础组件和布局</li><li>21-GUI-Event事件绑定</li><li>综合案例1: 银行取款机界面</li><li>综合案例2: 人机猜拳</li><li>综合案例3: 文章字数统计</li><li>综合案例4: 计算器-TKinter</li><li>综合案例5: 随机抽奖-Tiknter+ 线程</li><li>综合案例6: 压缩软件-Tkinter +压缩文件 </li><li>综合案例7: webserver</li><li>综合案例8: 飞机大战</li><li>综合案例9: 聊天室</li></ul>
+<h1 id="python-">Python后端开发</h1>
+<h1 id="python-">Python爬虫</h1>
+<h1 id="python-">Python大数据</h1>
+<h1 id="python-">Python人工智能</h1>
 
 </body>
 </html>
